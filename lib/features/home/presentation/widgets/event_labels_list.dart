@@ -14,7 +14,7 @@ class EventLabelsList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 40.h,
+          height: 5.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: events!.length,

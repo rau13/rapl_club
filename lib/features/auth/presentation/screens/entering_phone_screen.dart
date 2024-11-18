@@ -148,7 +148,7 @@ class _EnteringPhoneScreenState extends State<EnteringPhoneScreen> {
                     BlocListener<AuthBloc, AuthState>(
                       listener: (context, state) {
                         if (state is SmsSentState) {
-                          context.router.push(VerifyCodeRoute());
+                          context.router.push(VerifyCodeRoute(phone: '77013150052'));
                         } else if (state is ErrorState) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(state.message)),
@@ -163,7 +163,7 @@ class _EnteringPhoneScreenState extends State<EnteringPhoneScreen> {
                         width: 373.w,
                         height: 48.h,
                         onPressed: () {
-                          final phone = formattedPhone;
+                          final phone = "77013150052";
                           print(phone);
                           context.read<AuthBloc>().add(SendSmsEvent(phone));
                         },

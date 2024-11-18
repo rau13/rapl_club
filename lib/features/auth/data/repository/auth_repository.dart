@@ -13,13 +13,10 @@ class AuthRepository {
 
   Future<bool> sendSms(String phone) async {
     try {
-      final response = await restClientService.post(
-          '/auth/send-sms',
-          body: {
-            "phone": phone,
-          }
+      final response = await restClientService.get(
+          'https://wups1k.kz/api/v1/auth/send-sms?phone=77013150052',
       );
-      return response.statusCode == 400;
+      return response.statusCode == 200;
     } catch (e, stackTrace) {
       return Error.throwWithStackTrace(e, stackTrace);
     }
@@ -27,11 +24,11 @@ class AuthRepository {
 
   Future<AuthResponse> verifySms(String phone, String code) async {
     try{
-      final response = await restClientService.post(
+      final response = await restClientService.get(
         '/auth/verify-sms',
-        body: {
-          "phone": phone,
-          "code": code
+          params: {
+        "phone": phone,
+        "code": code
         }
       );
       // Assuming the response contains a token field

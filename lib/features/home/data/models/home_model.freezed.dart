@@ -20,7 +20,7 @@ HomeModel _$HomeModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HomeModel {
-  List<String>? get user => throw _privateConstructorUsedError;
+  List<UserModel>? get user => throw _privateConstructorUsedError;
   List<BannerModel>? get banners => throw _privateConstructorUsedError;
   List<Resident>? get residents => throw _privateConstructorUsedError;
   List<WorkRequest>? get work_requests => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $HomeModelCopyWith<$Res> {
       _$HomeModelCopyWithImpl<$Res, HomeModel>;
   @useResult
   $Res call(
-      {List<String>? user,
+      {List<UserModel>? user,
       List<BannerModel>? banners,
       List<Resident>? residents,
       List<WorkRequest>? work_requests,
@@ -76,7 +76,7 @@ class _$HomeModelCopyWithImpl<$Res, $Val extends HomeModel>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<UserModel>?,
       banners: freezed == banners
           ? _value.banners
           : banners // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ abstract class _$$HomeModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<String>? user,
+      {List<UserModel>? user,
       List<BannerModel>? banners,
       List<Resident>? residents,
       List<WorkRequest>? work_requests,
@@ -161,7 +161,7 @@ class __$$HomeModelImplCopyWithImpl<$Res>
       user: freezed == user
           ? _value._user
           : user // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<UserModel>?,
       banners: freezed == banners
           ? _value._banners
           : banners // ignore: cast_nullable_to_non_nullable
@@ -194,7 +194,7 @@ class __$$HomeModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HomeModelImpl implements _HomeModel {
   const _$HomeModelImpl(
-      {required final List<String>? user,
+      {required final List<UserModel>? user,
       required final List<BannerModel>? banners,
       required final List<Resident>? residents,
       required final List<WorkRequest>? work_requests,
@@ -211,9 +211,9 @@ class _$HomeModelImpl implements _HomeModel {
   factory _$HomeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeModelImplFromJson(json);
 
-  final List<String>? _user;
+  final List<UserModel>? _user;
   @override
-  List<String>? get user {
+  List<UserModel>? get user {
     final value = _user;
     if (value == null) return null;
     if (_user is EqualUnmodifiableListView) return _user;
@@ -323,7 +323,7 @@ class _$HomeModelImpl implements _HomeModel {
 
 abstract class _HomeModel implements HomeModel {
   const factory _HomeModel(
-      {required final List<String>? user,
+      {required final List<UserModel>? user,
       required final List<BannerModel>? banners,
       required final List<Resident>? residents,
       required final List<WorkRequest>? work_requests,
@@ -335,7 +335,7 @@ abstract class _HomeModel implements HomeModel {
       _$HomeModelImpl.fromJson;
 
   @override
-  List<String>? get user;
+  List<UserModel>? get user;
   @override
   List<BannerModel>? get banners;
   @override

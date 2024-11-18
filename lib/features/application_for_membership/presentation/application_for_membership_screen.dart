@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rapl_club/core/constants/routes/app_router.gr.dart';
 
 @RoutePage()
 class ApplicationForMembershipScreen extends StatefulWidget {
@@ -122,7 +124,9 @@ class _ApplicationForMembershipScreenState extends State<ApplicationForMembershi
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.router.push(EnrollmentApplicationRoute());
+              },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.black,

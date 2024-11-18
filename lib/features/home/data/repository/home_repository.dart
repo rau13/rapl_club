@@ -11,11 +11,12 @@ class HomeRepository {
   Future<HomeModel> getHomeData() async {
     try {
       final token = await _storage.read(key: 'auth_token');
-      final headers = token != null ? {'Authorization': 'Bearer $token'} : {};
 
       final response = await restClientService.get(
         '/main',
-      params: headers as Map<String, dynamic>,
+          params: {
+          'Authorization' : 'Bearer $token'
+        }
       );
 
       return HomeModel.fromJson(response.data['data']);

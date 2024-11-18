@@ -8,7 +8,9 @@ part of 'home_model.dart';
 
 _$HomeModelImpl _$$HomeModelImplFromJson(Map<String, dynamic> json) =>
     _$HomeModelImpl(
-      user: (json['user'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      user: (json['user'] as List<dynamic>?)
+          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       banners: (json['banners'] as List<dynamic>?)
           ?.map((e) => BannerModel.fromJson(e as Map<String, dynamic>))
           .toList(),

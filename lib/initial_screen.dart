@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rapl_club/core/styles/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rapl_club/features/news_page/presentation/news_screen.dart';
+import 'package:rapl_club/features/residents/residents_screen.dart';
 import 'core/constants/initial_page/initial_assets.dart';
 import 'core/constants/initial_page/initial_texts.dart';
 import 'features/home/presentation/screens/home_screen.dart';
@@ -21,9 +23,9 @@ class _InitialScreenState extends State<InitialScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const Center(child: Text(InitialTexts.calendar, style: TextStyle(fontSize: 24))),
-    const Center(child: Text(InitialTexts.residents, style: TextStyle(fontSize: 24))),
+    const ResidentsScreen(),
     const Center(child: Text(InitialTexts.communication, style: TextStyle(fontSize: 24))),
-    const Center(child: Text(InitialTexts.services, style: TextStyle(fontSize: 24))),
+    NewsScreen(),
   ];
 
   void _onItemTapped(int index) {

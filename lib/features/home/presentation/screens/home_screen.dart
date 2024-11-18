@@ -8,6 +8,7 @@ import 'package:rapl_club/core/styles/text_styles.dart';
 import 'package:rapl_club/core/widgets/custom_button.dart';
 import 'package:rapl_club/features/di/app_di.dart';
 import 'package:rapl_club/features/home/constants/home_screen_constants.dart';
+import 'package:rapl_club/features/home/data/models/user_model.dart';
 import 'package:rapl_club/features/home/data/repository/home_repository.dart';
 import 'package:rapl_club/features/home/presentation/bloc/home_bloc.dart';
 import 'package:rapl_club/features/home/presentation/bloc/home_event.dart';
@@ -38,7 +39,9 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 15.h),
+                        // SizedBox(height: 15.h),
+                        // _buildUserInfoSection(homeModel.user),
+                        // SizedBox(height: 30.h),
                         CustomButton(
                           text: HomeScreenConstants.loginButtonText,
                           color: AppColors.white,
@@ -48,8 +51,9 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
                           onPressed: () => context.router.push(EnteringPhoneRoute()),
                         ),
                         SizedBox(height: 30.h),
-                        CustomSlider(banners: homeModel.banners), // Pass banners to CustomSlider
+                        CustomSlider(banners: homeModel.banners),
                         SizedBox(height: 40.h),
+                        Divider(),
                         Text(
                           HomeScreenConstants.residentsSectionTitle,
                           style: AppTextStyles.inter(
@@ -59,8 +63,9 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
                           ),
                         ),
                         SizedBox(height: 14.h),
-                        ProfilesPageView(residents: homeModel.residents), // Pass residents to ProfilesPageView
+                        ProfilesPageView(residents: homeModel.residents),
                         SizedBox(height: 40.h),
+                        Divider(),
                         Text(
                           HomeScreenConstants.communicationSectionTitle,
                           style: AppTextStyles.inter(
@@ -75,6 +80,7 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
                           child: const TabSwitcher(),
                         ),
                         SizedBox(height: 40.h),
+                        Divider(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -109,7 +115,7 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
                         SizedBox(height: 14.h),
                         SizedBox(
                           height: 400.h,
-                          child: EventLabelsList(events: homeModel.events), // Pass events to EventLabelsList
+                          child: EventLabelsList(events: homeModel.events),
                         ),
                         SizedBox(height: 40.h),
                       ],
@@ -121,6 +127,58 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildUserInfoSection(List<UserModel>? user) {
+    if (user == null || user.isEmpty) {
+      return const SizedBox(); // Return empty if no user data
+    }
+
+    final currentUser = user.first; // Assuming you want to display the first user
+
+    return Container(
+      padding: EdgeInsets.all(16.w),
+      decoration: BoxDecoration(
+        color: AppColors.grey,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: currentUser.avatar != null && currentUser.avatar!.isNotEmpty
+                    ? NetworkImage(currentUser.avatar!)
+                    : const AssetImage('assets/default_avatar.png') as ImageProvider, // Default avatar
+              ),
+              SizedBox(width: 10.w),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${currentUser.surname} ${currentUser.name}',
+                    style: AppTextStyles.inter(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold, color: AppColors.mainBlue,
+                    ),
+                  ),
+                  Text(
+                    currentUser.phone,
+                    style: AppTextStyles.inter(
+                      fontSize: 14.sp,
+                      color: AppColors.grey, fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
+            ], 
+          ),
+          const Icon(Icons.notifications, color: AppColors.black),
+        ],
       ),
     );
   }
